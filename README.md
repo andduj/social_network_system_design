@@ -13,27 +13,27 @@
 * должна работать на мобильных устройствах и в браузерах
 
 photo:
-* id			  uuid	32		  байт
-* post_id		uuid	32		  байт
-* image		  BYTEA	1396480 байт
+* id
+* post_id
+* image
 
 post:
-* id          uuid	32		байт
-* place_id	  uuid	32		байт
-* user_id		  uuid	32		байт
-* description	text	1000	байт		
+* id
+* place_id
+* user_id
+* description	
 
 reaction:
-* id			  uuid	32		байт
-* post_id		uuid	32		байт
-* user_id		uuid	32		байт
-* mark		  text	1000	байт
+* id
+* post_id
+* user_id
+* mark
 
 comment:
-* id			  uuid	32		байт
-* post_id		uuid	32		байт
-* user_id		uuid	32		байт
-* text		  text	1000	байт
+* id
+* post_id
+* user_id	
+* text
 
 RPS (посты)
 RPS = 10 000 000 / 86400 ~= 115
@@ -46,12 +46,12 @@ RPS = 10 000 000 / 86400 ~= 115
 
 
 Traffic (посты)
-Traffic = 115 * 1096 = 11 040 байт/сек
+Traffic = 115 * 2000 = 230 000 байт/сек
 
 Traffic (реакции)
-Traffic = 115 * 1096 = 11 040 байт/сек
+Traffic = 115 * 2000 = 230 000 байт/сек
 
 Traffic (комментарии)
-Traffic = 115 * 1096 = 11 040 байт/сек
+Traffic = 115 * 2000 = 230 000 байт/сек
 
 Connections = 10 000 000 * 0.1 = 1000000

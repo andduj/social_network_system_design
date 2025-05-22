@@ -61,13 +61,13 @@ comment (300):
 
 
 посты:
-Traffic(read) = 20000 * 300 = 6000 KB/s
-Traffic(write) = 2000 * 300 = 600 KB/s
+* Traffic(read) = 20000 * 300 = 6000 KB/s
+* Traffic(write) = 2000 * 300 = 600 KB/s
 
 реакции:
-Traffic(read) = 20000 * 30 = 600 KB/s
-Traffic(write) = 2000 * 30 = 60 KB/s
+* Traffic(read) = 20000 * 30 = 600 KB/s
+* Traffic(write) = 2000 * 30 = 60 KB/s
 
 комментарии:
-Traffic(read) = 20000 * 300 = 6000 KB/s
-Traffic(write) = 2000 * 300 = 600 KB/s
+* Traffic(read) = 20000 * 300 = 6000 KB/s
+* Traffic(write) = 2000 * 300 = 600 KB/s

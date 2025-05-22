@@ -69,5 +69,5 @@ comment (size 300):
 * Traffic(write) = 2000 * 30 ~= 60 KB/s
 
 комментарии:
-* Traffic(read) = 20000 * 300 ~= 6000 KB/s
+* Traffic(read) = 40000 * 300 ~= 12000 KB/s
 * Traffic(write) = 2000 * 300 ~= 600 KB/s

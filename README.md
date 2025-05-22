@@ -64,10 +64,10 @@ comment (300):
 Traffic(read) = 20000 * 300 = 6000 KB/s
 Traffic(write) = 2000 * 300 = 600 KB/s
 
-Traffic (реакции)
+реакции:
 Traffic(read) = 20000 * 30 = 600 KB/s
 Traffic(write) = 2000 * 30 = 60 KB/s
 
-Traffic (комментарии)
+комментарии:
 Traffic(read) = 20000 * 300 = 6000 KB/s
 Traffic(write) = 2000 * 300 = 600 KB/s

@@ -21,26 +21,26 @@
 7. должна работать на мобильных устройствах и в браузерах
 
 
-photo (300):
+photo (size 300):
 * id
 * post_id
 * url
 
-post (300):
+post (size 300):
 * id
 * place_id
 * user_id
 * description
 * created_at
 
-reaction (30):
+reaction (size 30):
 * id
 * post_id
 * user_id
 * mark_id
 * created_at
 
-comment (300):
+comment (size 300):
 * id
 * post_id
 * user_id	
@@ -61,13 +61,13 @@ comment (300):
 
 
 посты:
-* Traffic(read) = 20000 * 300 = 6000 KB/s
-* Traffic(write) = 2000 * 300 = 600 KB/s
+* Traffic(read) = 20000 * 300 ~= 6000 KB/s
+* Traffic(write) = 2000 * 300 ~= 600 KB/s
 
 реакции:
-* Traffic(read) = 20000 * 30 = 600 KB/s
-* Traffic(write) = 2000 * 30 = 60 KB/s
+* Traffic(read) = 20000 * 30 ~= 600 KB/s
+* Traffic(write) = 2000 * 30 ~= 60 KB/s
 
 комментарии:
-* Traffic(read) = 20000 * 300 = 6000 KB/s
-* Traffic(write) = 2000 * 300 = 600 KB/s
+* Traffic(read) = 20000 * 300 ~= 6000 KB/s
+* Traffic(write) = 2000 * 300 ~= 600 KB/s

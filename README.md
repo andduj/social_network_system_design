@@ -21,28 +21,31 @@
 7. должна работать на мобильных устройствах и в браузерах
 
 
-photo:
+photo (300):
 * id
 * post_id
-* image
+* url
 
-post:
+post (300):
 * id
 * place_id
 * user_id
-* description	
+* description
+* created_at
 
-reaction:
+reaction (30):
 * id
 * post_id
 * user_id
-* mark
+* mark_id
+* created_at
 
-comment:
+comment (300):
 * id
-* reaction_id
+* post_id
 * user_id	
 * text
+* created_at
 
 RPS (посты)
 RPS = 10 000 000 / 86400 ~= 115

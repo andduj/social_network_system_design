@@ -31,7 +31,7 @@ reaction:
 
 comment:
 * id
-* post_id
+* reaction_id
 * user_id	
 * text
 

@@ -5,13 +5,12 @@ Table regions {
 
 Table users {
   id integer [pk]
-  first_name integer
-  last_name integer
+  first_name varchar
+  last_name varchar
 }
 
 Table marks {
   id integer [pk]
-  reaction_id integer
   name varchar
 }
 
@@ -25,6 +24,7 @@ Table posts {
   id integer [pk]
   user_id integer
   region_id integer
+  mark_id integer
   description varchar
   created_at datetime
 }
@@ -54,7 +54,7 @@ Table comments {
 Ref: posts.id < photos.post_id
 Ref: posts.id < reactions.post_id
 Ref: posts.id < comments.post_id
-Ref: reactions.id < marks.reaction_id
+Ref: marks.id < posts.mark_id
 Ref: regions.id < posts.region_id
 Ref: users.id < posts.user_id
 Ref: users.id < reactions.user_id

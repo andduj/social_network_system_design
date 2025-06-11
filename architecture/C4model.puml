@@ -1,1 +1,79 @@
 
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(user, "User")
+Container(loadBalancer, "Load Balancer", "Uses round robin")
+Container(apiGateway, "API Gateway", "")
+
+System_Boundary(mediaSystem, "Media system") {
+    Container(ceph, "Ceph", "")
+    Container(photoService, "Photo Service", "")
+    Rel(photoService, ceph, "")
+}
+note bottom of ceph
+  Replication factor 3
+  Master-Slave replication
+end note
+
+System_Boundary(postSystem, "Post system") {
+    Container(postService, "Post Service", "")
+    ContainerDb(postDB, "DB", "PgSQL", "",  $tags="db")
+    Rel(postService, postDB, "")
+}
+note bottom of postDB
+  Replication factor 3
+  Master-Slave replication
+end note
+
+System_Boundary(relationSystem, "Relation system") {
+    Container(relationService, "Relation Service", "")
+    ContainerDb(relationDB, "DB", "PgSQL", "",  $tags="db")
+    Rel(relationService, relationDB, "")
+}
+note bottom of relationDB
+  Replication factor 3
+  Master-Slave replication
+end note
+
+System_Boundary(reactionSystem, "Reaction system") {
+    Container(reactionService, "Reaction Service", "")
+    ContainerDb(reactionDB, "DB", "PgSQL", "",  $tags="db")
+    Rel(reactionService, reactionDB, "")
+}
+note bottom of reactionDB
+  Replication factor 3
+  Master-Slave replication
+end note
+
+System_Boundary(timelineSystem, "Timeline system") {
+    Container(timelineService, "Timeline Service", "")
+    ContainerDb(timelineDB, "DB", "PgSQL", "",  $tags="db")
+    ContainerDb(postCache, "Post cache", "Tarantool", "Stores latest some amount posts",  $tags="db")
+    Rel(timelineService, postCache, "")
+    Rel(postCache, timelineDB, "")
+}
+note bottom of postCache
+  Replication factor 3
+  Master-Slave replication
+end note
+note bottom of timelineDB
+  Replication factor 3
+  Master-Slave replication
+end note
+
+ContainerQueue(loadedPostsQueue, "Posts queue", "Kafka", "Message queue for loaded posts")
+Container(cdc, "CDC", "Scans a temporary bucket with photos, after the post is loaded, it moves them to the main bucket")
+
+Rel(user, loadBalancer, "")
+Rel(loadBalancer, apiGateway, "")
+Rel(apiGateway, mediaSystem, "")
+Rel(apiGateway, timelineService, "")
+Rel(apiGateway, relationSystem, "")
+Rel(apiGateway, postSystem, "")
+Rel(apiGateway, reactionSystem, "")
+Rel(cdc, postSystem, "Monitoring loaded posts")
+Rel(cdc, mediaSystem, "Moves photo to the main bucket or delete unlinced urls")
+Rel(postSystem, loadedPostsQueue, "Publish loaded posts")
+Rel(timelineSystem, loadedPostsQueue, "Extract loaded posts to rebuild timeline")
+@enduml
